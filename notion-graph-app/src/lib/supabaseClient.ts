@@ -1,0 +1,11 @@
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Client-side Supabase URL or Anon Key is not defined in .env.local');
+}
+
+// 汎用クライアント (ブラウザでも安全に使用できる)
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
